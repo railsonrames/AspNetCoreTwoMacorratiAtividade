@@ -1,0 +1,40 @@
+﻿@model AspNetCoreTwoMacorratiAtividade.Models.Pais
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Lista de Países</h2>
+<hr />
+<form asp-controller="Paises" asp-action="Index">
+    <div class="form-group">
+        <div class="row">
+            <div asp-validation-summary="ModelOnly"></div>
+            <br />
+            <div class="col-md-6">
+                <label asp-for="Nome"></label>
+                <select asp-for="Id" asp-items="@(new SelectList(ViewBag.Paises, "Id", "Nome"))"></select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                <input id="Submit" type="submit" value="Enviar" />
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-6">
+                @if (ViewBag.PaisSelecionado != null)
+                {
+                    <text>Pais selecionado: </text><br />
+                    <text>Nome: </text> @ViewBag.PaisSelecionado.Nome;<br />
+                    <text>Identificador: </text> @ViewBag.PaisSelecionado.Id;<br />
+                    <text>Código: </text> @ViewBag.PaisSelecionado.Codigo;
+                }
+            </div>
+        </div>
+    </div>
+</form>
